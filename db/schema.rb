@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_04_27_132757) do
   create_table "communities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "owner_id"
     t.string "name"
     t.string "url"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_communities_on_user_id"
+    t.index ["owner_id"], name: "index_communities_on_owner_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -46,5 +46,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_27_132757) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "communities", "users"
+  add_foreign_key "communities", "users", column: "owner_id"
 end

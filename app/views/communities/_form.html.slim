@@ -1,26 +1,15 @@
-= form_with(model: community) do |form|
-  - if community.errors.any?
-    div style="color: red"
-      h2 = "#{pluralize(community.errors.count, "error")} prohibited this community from being saved:"
-      ul
-        - community.errors.each do |error|
-          li = error.full_message
+= simple_form_for(@community) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  div
-    = form.label :user_id, style: "display: block"
-    = form.text_field :user_id
+  .form-inputs.flex.flex-col
+    = f.association :owner, as: :hidden
+    = f.input :name, input_html: {class: "input w-full input-bordered rounded-md"}
+    = f.input :url, input_html: {class: "input w-full input-bordered rounded-md"}
+    = f.input :comment, input_html: {class: "input w-full input-bordered rounded-md"}
 
-  div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
-
-  div
-    = form.label :url, style: "display: block"
-    = form.text_field :url
-
-  div
-    = form.label :comment, style: "display: block"
-    = form.text_area :comment
-
-  div
-    = form.submit
+  .form-actions.flex.flex-row.p-2
+    .p-1
+      = f.button :submit, class: "btn btn-primary rounded-md"
+    .p-1
+      = link_to t('btn.back'), @community, class: "btn btn-secondary rounded-md"

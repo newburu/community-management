@@ -99,3 +99,6 @@ end
 
 # SEO
 gem 'meta-tags'
+
+# フォーム
+gem "simple_form"

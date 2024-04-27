@@ -1,10 +1,12 @@
+h1 = t('.title')
+
 p style="color: green" = notice
 
 == render @community
 
-div
-  => link_to "Edit this community", edit_community_path(@community)
-  '|
-  =< link_to "Back to communities", communities_path
-
-  = button_to "Destroy this community", @community, method: :delete
+.flex.flex-row.p-2
+  - if policy(@community).edit?
+    .p-1
+      = link_to t('btn.edit'), edit_community_path(@community), class: "btn btn-primary rounded-md"
+    .p-1
+      = button_to t('btn.destroy'), @community, method: :delete, form: { data: { turbo_confirm: t('confirm.destroy') } }, class: "btn btn-warning rounded-md"

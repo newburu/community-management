@@ -17,7 +17,7 @@ class CommunitiesTest < ApplicationSystemTestCase
     fill_in "Comment", with: @community.comment
     fill_in "Name", with: @community.name
     fill_in "Url", with: @community.url
-    fill_in "User", with: @community.user_id
+    fill_in "User", with: @community.owner_id
     click_on "Create Community"
 
     assert_text "Community was successfully created"
@@ -31,7 +31,7 @@ class CommunitiesTest < ApplicationSystemTestCase
     fill_in "Comment", with: @community.comment
     fill_in "Name", with: @community.name
     fill_in "Url", with: @community.url
-    fill_in "User", with: @community.user_id
+    fill_in "User", with: @community.owner_id
     click_on "Update Community"
 
     assert_text "Community was successfully updated"

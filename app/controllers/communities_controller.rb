@@ -12,7 +12,7 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/new
   def new
-    @community = Community.new
+    @community = Community.new(owner: current_user)
   end
 
   # GET /communities/1/edit
@@ -65,6 +65,6 @@ class CommunitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def community_params
-      params.require(:community).permit(:user_id, :name, :url, :comment)
+      params.require(:community).permit(:owner_id, :name, :url, :comment)
     end
 end

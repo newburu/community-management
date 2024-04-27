@@ -17,7 +17,7 @@ class CommunitiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create community" do
     assert_difference("Community.count") do
-      post communities_url, params: { community: { comment: @community.comment, name: @community.name, url: @community.url, user_id: @community.user_id } }
+      post communities_url, params: { community: { comment: @community.comment, name: @community.name, url: @community.url, owner_id: @community.owner_id } }
     end
 
     assert_redirected_to community_url(Community.last)
@@ -34,7 +34,7 @@ class CommunitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update community" do
-    patch community_url(@community), params: { community: { comment: @community.comment, name: @community.name, url: @community.url, user_id: @community.user_id } }
+    patch community_url(@community), params: { community: { comment: @community.comment, name: @community.name, url: @community.url, owner_id: @community.owner_id } }
     assert_redirected_to community_url(@community)
   end
 

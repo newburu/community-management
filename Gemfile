@@ -74,3 +74,6 @@ gem 'dotenv-rails'
 
 # 設定
 gem 'config'
+
+# テンプレートエンジン
+gem 'slim-rails'

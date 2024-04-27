@@ -71,3 +71,6 @@ end
 
 # 環境変数
 gem 'dotenv-rails'
+
+# 設定
+gem 'config'

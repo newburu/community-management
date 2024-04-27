@@ -14,8 +14,8 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: <%= ENV["COMMUNITY_MANAGEMENT_DATABASE_PASSWORD"] %>
+  socket: <%= ENV["COMMUNITY_MANAGEMENT_DATABASE_SOCK_PATH"] %>
 
 development:
   <<: *default
@@ -51,5 +51,6 @@ test:
 production:
   <<: *default
   database: community_management_production
-  username: community_management
+  username: <%= ENV["COMMUNITY_MANAGEMENT_DATABASE_USER"] %>
   password: <%= ENV["COMMUNITY_MANAGEMENT_DATABASE_PASSWORD"] %>
+  socket: <%= ENV["SEAT_MANAGEMENT_DATABASE_SOCK_PATH"] %>

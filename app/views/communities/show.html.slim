@@ -10,3 +10,5 @@ p style="color: green" = notice
       = link_to t('btn.edit'), edit_community_path(@community), class: "btn btn-primary rounded-md"
     .p-1
       = button_to t('btn.destroy'), @community, method: :delete, form: { data: { turbo_confirm: t('confirm.destroy') } }, class: "btn btn-warning rounded-md"
+  .p-1
+    = link_to t('btn.join'), join_community_path(@community), class: "btn btn-primary rounded-md"

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :communities
+  resources :communities do
+    member do
+      get :join
+    end
+  end
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',

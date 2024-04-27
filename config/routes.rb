@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    # Twitter API認証用
+    :omniauth_callbacks => 'users/omniauth_callbacks',
+  }
+  resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -7,4 +15,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root "users#index"
+
+  # 静的ページ
+  get 'static_pages/info'
+  get 'static_pages/terms'
+  get 'static_pages/privacy'
+  get 'static_pages/faq'
 end

@@ -68,3 +68,34 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# 環境変数
+gem 'dotenv-rails'
+
+# 設定
+gem 'config'
+
+# テンプレートエンジン
+gem 'slim-rails'
+
+# 認証
+gem 'devise'
+gem 'devise-i18n'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem "omniauth-rails_csrf_protection"
+
+# 認可
+gem 'pundit'
+
+# パンくずリスト
+gem 'gretel'
+
+# i18n
+gem 'rails-i18n'
+group :development do
+  gem 'i18n-debug'
+end
+
+# SEO
+gem 'meta-tags'

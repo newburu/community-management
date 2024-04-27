@@ -1,13 +1,73 @@
-header.header
-  nav.menu.nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
-    = link_to root_path, {class: 'navbar-brand'} do
-      span.mr-2.system-font
-        | SeatManagement
-    button.navbar-toggler.navbar-toggler-right type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"
-      span.navbar-toggler-icon
-    #navbar.navbar-collapse.collapse
-      ul.navbar-nav.mr-auto
-        li.nav-item.dropdown
-          = link_to users_path, {class: "nav-item nav-link"} do
-            span.mr-2
-              = t('users.index.title')
+header
+  .navbar.bg-base-100
+    .flex-1
+      = link_to Settings.system[:title], root_path, class: "btn btn-ghost normal-case text-xl"
+    .hidden.sm:flex
+      ul.menu.menu-horizontal.px-1.z-10
+        li tabindex="0"
+          = link_to t('menu.list'), '#', class: "link link-hover"
+          ul.p-2.bg-base-100
+            li
+              = link_to t('menu.user'), users_path, class: "link link-hover"
+        .sm:hidden.lg:flex
+          li
+            = link_to t('menu.static_pages.info'), static_pages_info_path, class: "link link-hover"
+          li
+            = link_to t('menu.static_pages.privacy'), static_pages_privacy_path, class: "link link-hover"
+          li
+            = link_to t('menu.static_pages.terms'), static_pages_terms_path, class: "link link-hover"
+          li
+            = link_to t('menu.static_pages.faq'), static_pages_faq_path, class: "link link-hover"
+        li.md:flex.lg:hidden tabindex="0"
+          = link_to t('menu.static_pages.info'), static_pages_info_path, class: "link link-hover"
+          ul.p-2.bg-base-100
+            li
+              = link_to t('menu.static_pages.privacy'), static_pages_privacy_path, class: "link link-hover"
+            li
+              = link_to t('menu.static_pages.terms'), static_pages_terms_path, class: "link link-hover"
+            li
+              = link_to t('menu.static_pages.faq'), static_pages_faq_path, class: "link link-hover"
+        - if login?
+          li tabindex="0"
+            = link_to '#', class: "link link-hover py-0"
+              = image_tag current_user.image || "default.png", title: "#{current_user.display_name}さん", class: "rounded-full w-10"
+            ul.p-2.bg-base-100.right-0
+              li
+                = link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "link link-hover"
+        - else
+          li tabindex="0"
+            = button_to "Twitterでログイン", user_twitter_omniauth_authorize_path, method: :post, data: {turbo: "false"}, class: "link link-hover"
+    .flex.sm:hidden
+      input#menu-checkbox type="checkbox"
+      label.menu-btn for="menu-checkbox"
+        i.fas.fa-bars.fa-xl
+      .nav-content
+        input#menu-checkbox type="checkbox"
+        label.menu-btn for="menu-checkbox"
+          i.fas.fa-times
+        nav.nav-menu
+          ul
+            li tabindex="0"
+              a
+                = t('menu.list')
+              ul.p-2.bg-base-100
+                li
+                  = link_to t('menu.user'), users_path, class: "link link-hover"
+            li tabindex="0"
+              = link_to t('menu.static_pages.info'), static_pages_info_path, class: "link link-hover"
+              ul.p-2.bg-base-100
+                li
+                  = link_to t('menu.static_pages.privacy'), static_pages_privacy_path, class: "link link-hover"
+                li
+                  = link_to t('menu.static_pages.terms'), static_pages_terms_path, class: "link link-hover"
+                li
+                  = link_to t('menu.static_pages.faq'), static_pages_faq_path, class: "link link-hover"
+            - if login?
+              li
+                = link_to "#{current_user.display_name}さん", class: "link"
+                ul.p-2.bg-base-100
+                  = link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }
+            - else
+              li
+                = button_to "Twitterでログイン", user_twitter_omniauth_authorize_path, method: :post, data: {turbo: "false"}
+      label.nav-close for="menu-checkbox"

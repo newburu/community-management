@@ -1,5 +1,5 @@
 doctype html
-html
+html data-theme="cupcake"
   head
     title
       | CommunityManagement
@@ -9,8 +9,14 @@ html
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
+    script src="https://kit.fontawesome.com/#{ENV["FONTAWESOME_ID"]}.js" crossorigin="anonymous"
+
+    = render 'shared/adsense'
+    = render 'shared/analytics'
   body
-    main.container.mx-auto.mt-28.px-5.flex
-      = render 'layouts/header'
+    = render 'layouts/header'
+    main.container.mx-auto.px-4
+      .text-sm.breadcrumbs
+        = breadcrumbs class: nil, style: :ul
       = yield
-      = render 'layouts/footer'
+    = render 'layouts/footer'

@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Communities
+
+#communities
+  - @communities.each do |community|
+    == render community
+    p
+      = link_to "Show this community", community
+
+= link_to "New community", new_community_path

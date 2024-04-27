@@ -11,6 +11,8 @@ header
             ul.p-2.bg-base-100.rounded-t-none
               li
                 = link_to t('menu.user'), users_path, class: "link link-hover"
+              li
+                = link_to t('menu.community'), communities_path, class: "link link-hover"
         li.p-2.bg-base-100
           details
             summary
@@ -49,6 +51,8 @@ header
               ul.p-2.bg-base-100
                 li
                   = link_to t('menu.user'), users_path, class: "link link-hover"
+                li
+                  = link_to t('menu.community'), communities_path, class: "link link-hover"
             li tabindex="0"
               = link_to t('menu.static_pages.info'), static_pages_info_path, class: "link link-hover"
               ul.p-2.bg-base-100

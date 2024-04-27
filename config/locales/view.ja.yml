@@ -2,6 +2,7 @@ ja:
   menu:
     list: サービス
     user: ユーザー
+    community: コミュニティ
     static_pages:
       info: このサイトについて
       privacy: プライバシーポリシー
@@ -22,3 +23,18 @@ ja:
         destroy: このユーザーを削除する
     edit:
       title: ユーザーを修正
+  communities:
+    index:
+      title: コミュニティ
+      btn:
+        new: コミュニティを追加する
+        show: このコミュニティを見る
+    new:
+      title: コミュニティを追加
+    show:
+      title: コミュニティ
+      btn:
+        edit: このコミュニティを編集する
+        destroy: このコミュニティを削除する
+    edit:
+      title: コミュニティを修正

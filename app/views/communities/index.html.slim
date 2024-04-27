@@ -1,0 +1,14 @@
+p style="color: green" = notice
+
+h1 = t('.title')
+
+#communities
+  - @communities.each do |community|
+    == render community
+    p
+      = link_to t('.btn.show'), community, class: "btn btn-secondary rounded-md"
+
+.flex.flex-row.p-2
+  - if policy(Community).new?
+    .p-1
+      = link_to t('.btn.new'), new_community_path, class: "btn btn-primary rounded-md"

@@ -8,18 +8,6 @@ header.header
     #navbar.navbar-collapse.collapse
       ul.navbar-nav.mr-auto
         li.nav-item.dropdown
-          = link_to events_path, {class: "nav-item nav-link"} do
-            span.mr-2
-              = t('events.index.title')
-        li.nav-item.dropdown
-          = link_to attendees_path, {class: "nav-item nav-link"} do
-            span.mr-2
-              = t('attendees.index.title')
-        li.nav-item.dropdown
-          = link_to seats_path, {class: "nav-item nav-link"} do
-            span.mr-2
-              = t('seats.index.title')
-        li.nav-item.dropdown
           = link_to users_path, {class: "nav-item nav-link"} do
             span.mr-2
               = t('users.index.title')

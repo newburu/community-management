@@ -4,6 +4,7 @@ class CreateCommunities < ActiveRecord::Migration[7.1]
       t.references :owner, foreign_key: { to_table: :users }
       t.string :name
       t.string :url
+      t.string :icon
       t.text :comment
 
       t.timestamps

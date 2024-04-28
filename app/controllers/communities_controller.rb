@@ -78,6 +78,6 @@ class CommunitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def community_params
-      params.require(:community).permit(:owner_id, :name, :url, :comment)
+      params.require(:community).permit(:owner_id, :name, :url, :icon, :comment)
     end
 end

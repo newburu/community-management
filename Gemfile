@@ -102,3 +102,7 @@ gem 'meta-tags'
 
 # フォーム
 gem "simple_form"
+
+# 画像アップロード
+gem 'carrierwave'
+gem "mini_magick"

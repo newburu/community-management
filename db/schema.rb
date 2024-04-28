@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_27_132757) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_27_142815) do
   create_table "communities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "owner_id"
     t.string "name"
@@ -19,6 +19,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_27_132757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_communities_on_owner_id"
+  end
+
+  create_table "user_communities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "community_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_user_communities_on_community_id"
+    t.index ["user_id"], name: "index_user_communities_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -47,4 +57,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_27_132757) do
   end
 
   add_foreign_key "communities", "users", column: "owner_id"
+  add_foreign_key "user_communities", "communities"
+  add_foreign_key "user_communities", "users"
 end

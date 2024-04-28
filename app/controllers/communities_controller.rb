@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: %i[ show edit update destroy ]
+  before_action :set_community, only: %i[ show edit update destroy join ]
 
   # GET /communities or /communities.json
   def index
@@ -54,6 +54,19 @@ class CommunitiesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to communities_url, notice: "Community was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def join
+    @user_community = UserCommunity.find_or_initialize_by(user: current_user, community: @community, status: 0)
+    respond_to do |format|
+      if @user_community.save
+        format.html { redirect_to community_url(@community), notice: "Community was successfully joined." }
+        format.json { render :show, status: :ok, location: @community }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @user_community.errors, status: :unprocessable_entity }
+      end
     end
   end
 

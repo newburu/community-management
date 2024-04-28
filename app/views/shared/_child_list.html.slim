@@ -1,0 +1,7 @@
+.bg-white
+  .mx-auto.max-w-2xl.py-16.px-4.sm:py-24.sm:px-6.lg:max-w-7xl.lg:px-8
+    .grid.grid-cols-2.gap-y-10.gap-x-6.sm:grid-cols-4.lg:grid-cols-6.xl:grid-cols-8.xl:gap-x-8
+      - children.each do |child|
+        = link_to child, class: "group"
+          h3.mt-4.text-sm.text-gray-700
+            = child.name

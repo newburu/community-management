@@ -6,6 +6,9 @@ h1 Users
   - @users.each do |user|
     == render user
     p
-      = link_to "Show this user", user
+      = link_to t('.btn.show'), user, class: "btn btn-secondary rounded-md"
 
-= link_to "New user", new_user_path
+.flex.flex-row.p-2
+  - if policy(User).new?
+    .p-1
+      = link_to t('.btn.new'), new_user_path, class: "btn btn-primary rounded-md"

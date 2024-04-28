@@ -26,6 +26,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_27_142815) do
     t.bigint "user_id", null: false
     t.bigint "community_id", null: false
     t.integer "status"
+    t.string "code"
+    t.string "name"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["community_id"], name: "index_user_communities_on_community_id"

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :communities do
+    resources :members
     member do
       get :join
     end

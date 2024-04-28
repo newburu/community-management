@@ -1,0 +1,13 @@
+.bg-white
+  .mx-auto.max-w-2xl.py-16.px-4.sm:py-24.sm:px-6.lg:max-w-7xl.lg:px-8
+    .grid.grid-cols-2.gap-y-10.gap-x-6.sm:grid-cols-4.lg:grid-cols-6.xl:grid-cols-8.xl:gap-x-8
+      - children.each do |child|
+        = link_to community_member_path(child, user), class: "group"
+          .aspect-w-1.aspect-h-1.w-full.overflow-hidden.rounded-lg.bg-gray-200.xl:aspect-w-7.xl:aspect-h-8
+            - image = child.random_image
+            - if image.present?
+              = image_tag image.url, {alt: child.name, class: "h-full w-full object-cover object-center group-hover:opacity-75"}
+            - else
+              = image_tag "default.png"
+          h3.mt-4.text-sm.text-gray-700
+            = child.name

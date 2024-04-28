@@ -70,6 +70,19 @@ class CommunitiesController < ApplicationController
     end
   end
 
+  def user
+    @user_community = UserCommunity.find_or_initialize_by(user: current_user, community: @community, status: 0)
+    respond_to do |format|
+      if @user_community.save
+        format.html { redirect_to community_url(@community), notice: "Community was successfully joined." }
+        format.json { render :show, status: :ok, location: @community }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @user_community.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_community

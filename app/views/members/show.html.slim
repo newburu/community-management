@@ -1,0 +1,10 @@
+p style="color: green" = notice
+
+== render "member", user_community: @user_community
+
+.flex.flex-row.p-2
+  - if policy(@user_community).edit?
+    .p-1
+      = link_to t('btn.edit'), edit_community_member_path(@user_community), class: "btn btn-primary rounded-md"
+    .p-1
+      = button_to t('btn.destroy'), community_member_path(@user_community), method: :delete, form: { data: { turbo_confirm: t('confirm.destroy') } }, class: "btn btn-warning rounded-md"

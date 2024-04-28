@@ -1,0 +1,13 @@
+= simple_form_for(@user_community, url: community_member_path) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs.flex.flex-col
+    = f.input :name, input_html: {class: "input w-full input-bordered rounded-md"}
+    = f.input :comment, input_html: {class: "input w-full input-bordered rounded-md"}
+
+  .form-actions.flex.flex-row.p-2
+    .p-1
+      = f.button :submit, class: "btn btn-primary rounded-md"
+    .p-1
+      = link_to t('btn.back'), community_member_path(@user_community), class: "btn btn-secondary rounded-md"

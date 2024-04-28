@@ -2,7 +2,7 @@ p style="color: green" = notice
 
 == render @user
 
-== render partial: 'shared/child_list', locals: { children: @user.communities }
+== render partial: 'shared/community_list', locals: { children: @user.communities, user: @user }
 
 .flex.flex-row.p-2
   - if policy(@user).edit?

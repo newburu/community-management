@@ -7,6 +7,9 @@ class User < ApplicationRecord
          # Twitter API認証用に追加
          :omniauthable, omniauth_providers: [:twitter]
 
+  has_many :user_communities
+  has_many :communities, through: :user_communities
+
   # ロール
   enum role: { normal: 0, admin: 1 }
 

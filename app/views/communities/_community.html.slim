@@ -1,13 +1,11 @@
 div id="#{dom_id community}"
-  p
-    strong Owner:
-    =< community.owner_id
-  p
-    strong Name:
-    =< community.name
-  p
-    strong Url:
-    =< community.url
-  p
-    strong Comment:
-    =< community.comment
+  .flex.flex-row.p-1
+    - image = community.icon
+    - if image.present?
+      = link_to image.url, data: {lightbox: image.url, title: community.name}
+        = image_tag image.url, class: "rounded-lg thumb"
+    - else
+      = image_tag "default.png", class: "rounded-lg thumb"
+    .title.p-1.pl-2
+      .flex.flex-col
+        = link_to community.name, community, class: "link link-primary align-bottom"

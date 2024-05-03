@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+community = Community.create!(
+  owner_id: 1,
+  name: 'ポジはる隊',
+  url: 'https://voicy.jp/channel/2256',
+  comment: 'Voicyチャンネル「ポジティブマインドの作り方ラジオ」のプレミアムリスナー',
+)
+UserCommunity.create!(
+  user_id: 1,
+  community_id: community.id,
+  status: 1,
+)

@@ -18,3 +18,17 @@ UserCommunity.create!(
   community_id: community.id,
   status: 1,
 )
+
+require 'csv'
+
+def upsert_seeds(model:)
+  now = Time.zone.now
+  timestamps = { created_at: now, updated_at: now }
+  file = File.read("db/seeds/#{model.to_s.underscore.pluralize}.csv")
+  records = CSV.parse(file, headers: true).map do |row|
+    row.to_h.merge(timestamps)
+  end
+  model.upsert_all(records)
+end
+
+upsert_seeds(model: Strength)

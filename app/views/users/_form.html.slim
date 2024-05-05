@@ -1,18 +1,24 @@
-= form_with(model: user) do |form|
-  - if user.errors.any?
-    div style="color: red"
-      h2 = "#{pluralize(user.errors.count, "error")} prohibited this user from being saved:"
-      ul
-        - user.errors.each do |error|
-          li = error.full_message
+= turbo_frame_tag dom_id(user) do
+  = simple_form_for(user) do |f|
+    = f.error_notification
+    = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
+    .form-inputs.flex.flex-col
+      = f.label :name, style: "display: block"
+      = f.text_field :name
 
-  div
-    = form.label :comment, style: "display: block"
-    = form.text_area :comment
+    .form-inputs.flex.flex-col
+      = f.label :comment, style: "display: block"
+      = f.text_area :comment
 
-  div
-    = form.submit
+    .form-inputs.flex.flex-col
+      = f.fields_for :user_strengths do |subform|
+        = render partial: "user_strengths/form", locals: {form: subform}
+      = turbo_frame_tag 'new_user_strengths'
+      = link_to t('btn.add'), new_user_strength_path, data: {turbo: true, turbo_stream: true}, class: "btn btn-primary rounded-md"
+
+    .form-actions.flex.flex-row.p-2
+      .p-1
+        = f.button :submit, class: "btn btn-primary rounded-md"
+      .p-1
+        = link_to t('btn.back'), user, class: "btn btn-secondary rounded-md"

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :user_communities
   has_many :communities, through: :user_communities
 
-  has_many :user_strengths, dependent: :destroy
+  has_many :user_strengths, -> {order(:no)}, dependent: :destroy
   accepts_nested_attributes_for :user_strengths, allow_destroy: true
 
   # ロール

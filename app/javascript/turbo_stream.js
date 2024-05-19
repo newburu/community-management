@@ -7,9 +7,6 @@ document.addEventListener('turbo:before-fetch-response', (event) => {
     alert(key + ':' + decodeURI(json[key]))
   }
   
-  // ---------------
-  // 追加
-  // ---------------
   // turbo frameから リダイレクトを望まれていたらリダイレクトする
   if(event.detail.fetchResponse.header('X-Turbo-Connect') && typeof (event.detail.fetchResponse) !== 'undefined') {
     var response = event.detail.fetchResponse.response

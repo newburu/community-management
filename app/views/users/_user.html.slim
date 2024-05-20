@@ -1,7 +1,21 @@
 div id="#{dom_id user}"
-  p
-    strong Name:
-    =< user.name
-  p
-    strong Comment:
-    =< user.comment
+  .flex.flex-row
+    .p-1
+      strong Name:
+    .p-1
+      = user.name
+  .flex.flex-row
+    .p-1
+      strong User Strengths:
+    .p-1
+      - user.user_strengths.each do |strength|
+        .flex.flex-row
+          .p-1
+            = strength.no
+          .p-1
+            = strength.strength.name
+  .flex.flex-row
+    .p-1
+      strong Comment:
+    .p-1
+      = user.comment

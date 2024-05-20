@@ -10,7 +10,7 @@ ja:
       faq: よくある質問
   users:
     index:
-      title: ユーザー
+      title: ユーザーリスト
       btn:
         new: ユーザーを追加する
         show: このユーザーを見る

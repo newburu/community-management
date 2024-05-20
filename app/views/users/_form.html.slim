@@ -4,18 +4,19 @@
     = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
     .form-inputs.flex.flex-col
-      = f.label :name, style: "display: block"
-      = f.text_field :name
+      = f.label :name
+      = f.text_field :name, class: "input w-full input-bordered rounded-md"
 
     .form-inputs.flex.flex-col
-      = f.label :comment, style: "display: block"
-      = f.text_area :comment
-
-    .form-inputs.flex.flex-col
+      = f.label :user_strengths
       = f.fields_for :user_strengths do |subform|
         = render partial: "user_strengths/form", locals: {form: subform}
       = turbo_frame_tag 'new_user_strengths'
       = link_to t('btn.add'), new_user_strength_path, data: {turbo: true, turbo_stream: true}, class: "btn btn-primary rounded-md"
+
+    .form-inputs.flex.flex-col
+      = f.label :comment
+      = f.text_area :comment, class: "input w-full input-bordered rounded-md"
 
     .form-actions.flex.flex-row.p-2
       .p-1

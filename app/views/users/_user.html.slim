@@ -1,7 +1,26 @@
 div id="#{dom_id user}"
-  p
-    strong Name:
-    =< user.name
-  p
-    strong Comment:
-    =< user.comment
+  .flex.flex-row
+    .p-1.label
+      = t('activerecord.attributes.user.name')
+    .p-1
+      = user.name
+  .flex.flex-row
+    .collapse.collapse-arrow.bg-base-200 tabindex="0"
+      input type="radio" name="user_strengths"
+      .collapse-title.text-xl.font-medium
+        .p-1.label
+          = t('activerecord.attributes.user.user_strengths')
+      .collapse-content
+        .flex.flex-row
+          .p-1
+            - user.user_strengths.each do |strength|
+              .flex.flex-row
+                .p-1
+                  = strength.no
+                .p-1
+                  = strength.strength.name
+  .flex.flex-row
+    .p-1.label
+      = t('activerecord.attributes.user.comment')
+    .p-1
+      = user.comment

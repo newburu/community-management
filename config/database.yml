@@ -53,4 +53,4 @@ production:
   database: community_management_production
   username: <%= ENV["COMMUNITY_MANAGEMENT_DATABASE_USER"] %>
   password: <%= ENV["COMMUNITY_MANAGEMENT_DATABASE_PASSWORD"] %>
-  socket: <%= ENV["SEAT_MANAGEMENT_DATABASE_SOCK_PATH"] %>
+  socket: <%= ENV["COMMUNITY_MANAGEMENT_DATABASE_SOCK_PATH"] %>
